@@ -4,7 +4,9 @@ html {
 
 body {
     font-family: Arial, Helvetica, sans-serif;
+    min-height:100%;
     margin: 0;
+    padding: 0;
 }
 
 * {
@@ -13,11 +15,70 @@ body {
 
 .calculator{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
+   margin:1rem;
+   border-style: solid;
+   border-color: #bbb;
+   width: 15rem;
+ 
+}
+
+.calculator__field{
+    display: flex;
+    flex: 0,0,100%;
+}
+
+.calculator__screen{
+    margin: 0.5rem;
+    border-style: solid;
+   border-color: #eee;
+   width: 13rem;
+    line-height: 1.5rem;
 }
 
 .calculator__buttons{
     display: flex;
-    flex-direction: column;
     
+    margin: 0.25rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    
+}
+.calculator__buttons> * :first-child{       /* az összes leszármazottnak az első gyerekei (az oszlopok első elemei jelen esetben)*/
+    background-color: #bbbbbb;
+}
+
+.calculator__buttonscol1>*{
+    display: block;
+    margin: 0.25rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    font-size: 1.25rem;
+}
+.calculator__buttonscol2>*{
+    display: block;
+    margin: 0.25rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    font-size: 1.25rem;
+}
+.calculator__buttonscol3 >*{
+    display: block;
+    margin: 0.25rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    font-size: 1.25rem;
+}
+.calculator__buttonscol4>*{
+    display: block;
+    margin: 0.25rem;
+    min-width: 3rem;
+    min-height: 3rem;
+    font-size: 1.25rem;
+}
+
+.calculator__buttons--equal{
+   height: 12.75rem;
+   background-color: rgb(30,150,250);
 }
