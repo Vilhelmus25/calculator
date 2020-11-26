@@ -1,0 +1,23 @@
+html {
+    font-size: 24px;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.calculator{
+    display: flex;
+    flex-direction: column;
+}
+
+.calculator__buttons{
+    display: flex;
+    flex-direction: column;
+    
+}
