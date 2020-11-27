@@ -35,6 +35,7 @@ body {
    border-color: #eee;
    width: 13rem;
     line-height: 1.5rem;
+    min-height: 1.75rem;
 }
 
 .calculator__buttons{
