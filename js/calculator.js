@@ -77,7 +77,9 @@ function calculate() {
 
 function checkOperationRule(op, num, all) {
     let leftOperand = [];           // -andó
+    let left = [];
     let rightOperand = [];              // -ó
+    let right = [];
     let currentOperand = '';            // aktuális operátor, a helyes műveleti függvény meghívásához
     let numberIterator = 0;             // bejárjuk vele a csak számokat tartalmazó elemeket amiket a screen-ből szűrtünk ki
     let operandIterator = 0;            // bejárjuk vele a csak operátorokat tartalmazó elemeket amiket a screen-ből szűrtünk ki
@@ -150,7 +152,7 @@ function checkOperationRule(op, num, all) {
             }
 
             if (all[i] == op[operandIterator]) {
-                if (all[i + 1] == op[operandIterator]) {
+                if (all[i + 1] == op.some(elements => elements)) {
                     return error();
                 }
                 currentOperand = op[operandIterator];
@@ -161,23 +163,44 @@ function checkOperationRule(op, num, all) {
                         rightOperand.push(num[numberIterator]);
                         numberIterator += 1;
                         i += 1;
-                    }
-                    if (all[j] == '.') {
+                    } else if (all[j] == '.') {
                         rightOperand.push('.');
                         i += 1;
+                    } else {
+                        i = j - 1;
+                        j = all.length;
                     }
 
                 }
+                left = parseFloat(leftOperand.join(''));          //  itt átalakítjuk stringből floatba, hogy az összeadás is működjön és ne egymáshoz fűzze a számokat
+                right = parseFloat(rightOperand.join(''));
+                if (operandIterator < 1) {
+                    console.log("op: ", operandIterator);
+                    equation = operationSelector(left, right, currentOperand, equation);
+                    console.log(equation);
+                }
+                else {
+                    console.log("op2: ", operandIterator);
+                    left = equation;
+                    console.log(left);
+                    console.log(right);
+                    equation = operationSelector(left, right, currentOperand, equation);
+                    // console.log(leftOperand);
+                    // console.log(currentOperand);
+                    // console.log(rightOperand);
+                    // console.log("object2");
+                }
+                operandIterator += 1;
+                console.log("op-out: ", operandIterator);
+
             }
+
 
         }
 
-        leftOperand = parseFloat(leftOperand.join(''));          //  itt átalakítjuk stringből floatba, hogy az összeadás is működjön és ne egymáshoz fűzze a számokat
-        rightOperand = parseFloat(rightOperand.join(''));
-        console.log(leftOperand);
-        console.log(currentOperand);
-        console.log(rightOperand);
-        equation = operationSelector(leftOperand, rightOperand, currentOperand, equation)
+
+
+        //equation = operationSelector(leftOperand, rightOperand, currentOperand, equation)
 
     } else {
         return error();
